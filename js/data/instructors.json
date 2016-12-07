@@ -1,0 +1,52 @@
+{
+   "instructors": [
+      {
+      "id": 0,
+      "cohortIds": [0, 1],
+      "fName": "Harry",
+      "lName": "Spane",
+      "title": "Lead Instructor",
+      "phoneNumber": "(949) 555-5555",
+      "email": "harry.spane@redwoodcode.com",
+      "birthday": "03/15/1981",
+      "sex": "male",
+      "daysAbsent": 0      
+      },
+      {
+      "id": 1,
+      "cohortIds": [0],
+      "fName": "Barry",
+      "lName": "Purdue",
+      "title": "Assistant Instructor",
+      "phoneNumber": "(949) 555-5555",
+      "email": "barry.purdue@redwoodcode.com",
+      "birthday": "01/23/1987",
+      "sex": "male",
+      "daysAbsent": 0      
+      },
+      {
+      "id": 2,
+      "cohortIds": [],
+      "fName": "test",
+      "lName": "test",
+      "title": "test",
+      "phoneNumber": "test",
+      "email": "test",
+      "birthday": "test",
+      "sex": "test",
+      "daysAbsent": 0      
+      }
+   ]
+
+
+
+
+
+
+
+
+
+
+
+
+}

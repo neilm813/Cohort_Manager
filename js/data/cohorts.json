@@ -1,0 +1,48 @@
+{
+   "cohorts": [
+      {
+         "id": 0,
+         "startDate": "10/03/2016",
+         "endDate": "12/23/2016",
+         "year": 2016,
+         "season": "Fall",
+         "numberOfProjects": 3,
+         "holidays": "Thanksgiving: November 24th & 25th",
+         "curriculum": "HTML, CSS, JavaScript, jQuery, Node.js, Angular, .NET, C#, SQL",
+         "instructors": [],
+         "notes": [],
+         "students": []
+      },
+      {
+         "id": 1,
+         "startDate": "01/02/2017",
+         "endDate": "03/24/2017",
+         "year": 2017,
+         "season": "Winter",
+         "numberOfProjects": 3,
+         "holidays": "none",
+         "curriculum": "HTML, CSS, JavaScript, jQuery, Node.js, Angular, .NET, C#, SQL",
+         "instructors": [],
+         "notes": [],
+         "students": []
+      }
+   ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

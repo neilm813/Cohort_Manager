@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="cohortController">
+<head>
+   <meta charset="UTF-8">
+   <title>Redwood Cohort Manager</title>
+
+   <!-- Angular -->
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- JQuery 2.x for Bootstrap JS Modal Support -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+   <!-- Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+   <!-- Personal CSS -->
+   <link rel="stylesheet" href="./css/styles.css">
+
+   <link rel="stylesheet" href="./css/animate.css">
+</head>
+<body ng-cloak class="tinted-image">
+
+	<!-- Bootstrap Modals -->
+	<div>
+		<!-- Create New Cohort -->
+		<div class="text-center modal fade" id="createNewCohortModal" tabindex="-1" role="dialog" aria-labelledby="createNewCohortModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="addNewCohortTitle">Add New Cohort</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Start Date
+								<input ng-model="createCohort.startDate" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>End Date
+								<input ng-model="createCohort.endDate" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Year
+								<input ng-model="createCohort.year" class="form-control" type="number" placeholder="YYYY">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Season
+								<input ng-model="createCohort.season" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Number of Projects
+								<input ng-model="createCohort.numberOfProjects" class="form-control" type="number">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Holidays
+								<input ng-model="createCohort.holidays" class="form-control" type="text" placeholder="Holiday: Date, Holiday: Date">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Curriculum
+								<input ng-model="createCohort.curriculum" class="form-control" type="text" placeholder="Topic 1, Topic 2">
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button ng-click="saveNewCohortClick()" type="button" class="btn btnPrimary" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- End #createNewCohortModal -->
+
+		<!-- Edit Cohort -->
+		<div class="text-center modal fade" id="editCohortModal" tabindex="-1" role="dialog" aria-labelledby="editCohortModalTitle">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="editCohortModalTitle">Edit Cohort's Information</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Start Date
+								<input ng-model="editedCohort.startDate" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>End Date
+								<input ng-model="editedCohort.endDate" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Year
+								<input ng-model="editedCohort.year" class="form-control" type="number" placeholder="YYYY">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Season
+								<input ng-model="editedCohort.season" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Number of Projects
+								<input ng-model="editedCohort.numberOfProjects" class="form-control" type="number">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Holidays
+								<input ng-model="editedCohort.holidays" class="form-control" type="text" placeholder="Holiday: Date, Holiday: Date">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Curriculum
+								<input ng-model="editedCohort.curriculum" class="form-control" type="text" placeholder="Topic 1, Topic 2">
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button ng-click="saveEditedCohortClick()" type="button" class="btn btnPrimary" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- End #editCohortModal -->
+
+		<!-- Create New Instructor -->
+		<div class="text-center modal fade" id="createNewInstructorModal" tabindex="-1" role="dialog" aria-labelledby="createNewInstructorModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="addNewInstructorTitle">Add New Instructor</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>First Name 
+								<input ng-model="createInstructor.fName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Last Name 
+								<input ng-model="createInstructor.lName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Title 
+								<input ng-model="createInstructor.title" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Phone Number 
+								<input ng-model="createInstructor.phoneNumber" class="form-control" type="tel" placeholder="(###) ### - ####">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Email Address 
+								<input ng-model="createInstructor.email" class="form-control" type="email">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Birthday 
+								<input ng-model="createInstructor.birthday" class="form-control" type="text" placeholder="MM/DD/YYYY">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Sex 
+								<input ng-model="createInstructor.sex" class="form-control" type="text">
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button ng-click="saveNewInstructorClick()" type="button" class="btn btnPrimary" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- End #createNewInstructorModal -->
+
+		<!-- Edit Instructor -->
+		<div class="text-center modal fade" id="editInstructorModal" tabindex="-1" role="dialog" aria-labelledby="editInstructorModalTitle">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="editInstructorModalTitle">Edit Instructor's Information</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>First Name 
+								<input ng-model="editedInstructor.fName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Last Name 
+								<input ng-model="editedInstructor.lName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Title 
+								<input ng-model="editedInstructor.title" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Phone Number 
+								<input ng-model="editedInstructor.phoneNumber" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Email Address 
+								<input ng-model="editedInstructor.email" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Days Absent 
+								<input ng-model="editedInstructor.daysAbsent" class="form-control" type="number">
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button ng-click="saveEditedInstructorClick()" type="button" class="btn btnPrimary" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- End #editInstructorModal -->
+
+		<!-- Create New Student -->
+		<div class="text-center modal fade" id="createNewStudentModal" tabindex="-1" role="dialog" aria-labelledby="createNewStudentModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="addNewStudentTitle">Add New Student</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>First Name 
+								<input ng-model="createStudent.fName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Last Name 
+								<input ng-model="createStudent.lName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Prior Experience 
+								<input ng-model="createStudent.priorExperience" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Phone Number 
+								<input ng-model="createStudent.phoneNumber" class="form-control" type="tel" placeholder="(###) ### - ####">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Email Address 
+								<input ng-model="createStudent.email" class="form-control" type="email">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Birthday 
+								<input ng-model="createStudent.birthday" class="form-control" type="text" placeholder="MM/DD/YYYY">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Sex 
+								<input ng-model="createStudent.sex" class="form-control" type="text">
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button ng-click="saveNewStudentClick()" type="button" class="btn btnPrimary" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- End #createNewStudentModal -->
+
+		<!-- Edit Student -->
+		<div class="text-center modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalTitle">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="editStudentModalTitle">Edit Student's Information</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>First Name 
+								<input ng-model="editedStudent.fName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Last Name 
+								<input ng-model="editedStudent.lName" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Prior Experience 
+								<input ng-model="editedStudent.priorExperience" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Phone Number 
+								<input ng-model="editedStudent.phoneNumber" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Email Address 
+								<input ng-model="editedStudent.email" class="form-control" type="text">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Absentee Points 
+								<input ng-model="editedStudent.absenteePoints" class="form-control" type="number">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Number of Payments Delinquent
+								<input ng-model="editedStudent.payDelinquency" class="form-control" type="number">
+							</label>
+						</div>
+						<div class="form-group">
+							<label>Graduation Status
+								<input ng-model="editedStudent.graduated" class="form-control" type="text">
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button ng-click="saveEditedStudentClick()" type="button" class="btn btnPrimary" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- End #editStudentModal -->
+	</div>
+
+	<!-- Body Container -->
+	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container-fluid">
+				<a href="https://redwoodcodeacademy.com/">
+					<img src="./css/img/RCAtext.png" alt="Redwood Code Academy">
+				</a>
+            <div class="inline-block">
+					<h1 class="roboto">Cohort Manager</h1>
+            </div>
+         </div>
+      </nav>
+		<!-- First Row -->
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="col-sm-6">
+					<div class="animated fadeInDownBig"><!-- Cohorts Left -->
+						<h3 class="text-center roboto">Cohorts</h3>
+							<ul class="well nav text-center roboto">
+								<li ng-repeat="cohort in cohorts" ng-click="setSelectedCohortClick(cohort)">
+									<button class="btn btn-block btnRepeat animated fadeInDown">{{ cohort.season }} {{ cohort.year }}
+									</button>
+								</li>
+								<li>
+									<button ng-click="createNewCohortClick()" class="btn btnPrimary btn-block">Add New Cohort
+									</button>
+								</li>
+							</ul>
+					</div><!-- Cohorts Left -->
+
+					<!--Instructors Left-->
+					<div ng-show="isCohortSelected" class="animated fadeInDown">
+						<h3 class="text-center roboto">{{ selectedCohort.season }} {{ selectedCohort.year }} Instructors</h3>
+						<div class="well">
+							<ul class=" nav text-center roboto">
+								<li ng-repeat="instructor in selectedCohort.instructors" ng-click="setSelectedInstructorClick(instructor.id)">
+									<button class="btn btn-block btnRepeat">{{ instructor.fName }} {{ instructor.lName }}
+									</button>
+								</li>
+							</ul>
+
+							<!-- Instructors Select Form -->
+							<div class="form-group selectForm">
+								<select ng-change="setAddInstructorOnChange()" ng-model="addInstructorId" class="addInstructorToCohort form-control roboto"> 
+									<option disabled selected value>Select Instructor</option>
+									<option ng-repeat="instructor in instructors | instructorsNotInSelectedCohort: selectedCohort | orderBy: 'fName'"  value="{{ instructor.id }}">{{ instructor.fName }} {{ instructor.lName }}
+									</option>
+								</select>
+								<button ng-click="addInstructorToCohortClick()" class="btn btnPrimary btn-block marginTopBtn">Add Instructor</button>
+							</div> <!-- Instructors Select Form -->
+						</div>
+					</div> <!-- Instructors Left --> 
+
+					<!-- Create New X Left-->
+					<div ng-show="isCohortSelected" class="animated fadeInDown fadeOut">
+						<h3 class="text-center roboto">Create New</h3>
+						<div class="well">
+							<button ng-click="createNewInstructorClick()" class="btn btnPrimary btn-block">Instructor
+							</button>
+							<button ng-click="createNewStudentClick()" class="btn btnPrimary btn-block">Student
+						</div>
+					</div>
+				</div> <!-- Left Cohorts & Instructors & Create New Col6 -->
+
+				<!-- Left Students Col6-->
+				<div ng-show="isCohortSelected" class="col-sm-6 animated fadeInLeft fadeOut">
+					<h3 class="text-center roboto">{{ selectedCohort.season }} {{selectedCohort.year }} Students</h3>
+					<div class="well">
+						<ul class="nav text-center roboto">
+							<li ng-repeat="student in selectedCohort.students | orderBy: 'fName'" ng-click="setSelectedStudentClick(student.id)">
+								<button class="btn btn-block btnRepeat">{{ student.fName }} {{ student.lName }}
+								</button>
+							</li>
+						</ul>
+
+						<!-- Students Select Form -->
+						<div class="form-group selectForm">
+							<select ng-change="setAddStudentOnChange()" ng-model="addStudentId" class="addStudentToCohort form-control roboto"> 
+								<option disabled selected value>Select Student</option>
+								<option ng-repeat="student in students | studentsNotInSelectedCohort: selectedCohort | orderBy: 'fName'"  value="{{ student.id }}">{{ student.fName }} {{ student.lName }}
+								</option>
+							</select>
+							<button ng-click="addStudentToCohortClick()" class="btn btnPrimary btn-block marginTopBtn">Add Student</button>
+						</div> <!-- Students Select Form -->
+					</div> <!-- Student Buttons -->
+				</div> <!-- Left Students Col6 -->
+			</div> <!-- Left Parent Col6 -->
+
+			<!-- Right Col6 -->
+			<div class="col-sm-6">
+				<!-- Cohort & Instructor Information Column ng-show-->
+				<div class="col-sm-6 ">
+					<div ng-show="isCohortSelected" class="animated fadeInLeft fadeOut" ><!-- Cohort Info ng-show-->
+						<h3 class="text-center roboto">{{ selectedCohort.season }} {{ selectedCohort.year }} Cohort</h3>
+						<div class="well">
+							<ul class="text-center roboto">
+								<li class="listHeadline firstLi">Schedule</li>
+								<li class="largerLiFont">{{ selectedCohort.startDate }} - {{ selectedCohort.endDate }}</li>
+								<li class="listHeadline">Holidays</li>
+								<li class="largerLiFont">
+									{{ selectedCohort.holidays }}</li>
+								<li class="listHeadline">Core Curriculum</li>
+								<li class="largerLiFont">
+									{{ selectedCohort.curriculum }}</li>
+								<li class="listHeadline">Projects</li>
+								<li class="largerLiFont">{{ selectedCohort.numberOfProjects }}</li>
+								<li class="listHeadline">Roll Count</li>
+								<li class="largerLiFont">{{ selectedCohort.students.length }}</li>
+							</ul>
+							<div class="text-center">
+							<button ng-click="editCohortClick()" class="btn btnWarning editBtn">Edit
+							</button>
+							<button ng-click="removeSelectedCohortClick()" class="btn btnDanger">Remove
+							</button>
+							</div>
+						</div>
+					</div><!-- Cohort Info ng-show-->
+
+					<!-- Instructor Info ng-show-->
+					<div>
+						<div ng-show="isInstructorSelected" class="animated fadeInDown fadeOut">
+							<h3 class="text-center">Instructor Information</h3>
+							<div class="well">
+								<ul class="text-center roboto">
+									<li class="firstLi listHeadline">{{ selectedInstructor.title }}
+									</li>
+									<li>{{ selectedInstructor.fName }} {{ selectedInstructor.lName }}
+									</li>
+									
+									<li class="listHeadline">Contact Info</li>
+									<li>{{ selectedInstructor.phoneNumber }}</li>
+									<li>{{ selectedInstructor.email }}</li>
+									
+									<li class="listHeadline">Number of Cohorts Taught</li>
+									<li>{{ selectedInstructor.cohortIds.length }}</li>
+									
+									<li class="listHeadline">Birthday</li>
+									<li>{{ selectedInstructor.birthday }}</li>
+									
+									<li class="listHeadline">Days Absent</li>
+									<li>{{ selectedInstructor.daysAbsent }}</li>
+								</ul>
+								<div class="text-center">
+									<!-- #instructorModal at top -->
+									<button ng-click="editInstructorClick()" class="btn btnWarning editBtn">Edit
+									</button>
+									<button ng-click="removeSelectedInstructorClick()" class="btn btnDanger">Remove
+									</button>
+								</div>
+							</div> <!-- Instructor Info + Buttons-->
+						</div>
+					</div><!-- Instructor Info ng-show-->
+				</div> <!-- Cohort & Instructor Information Column -->
+
+				<!-- Student Info Col6 -->
+				<div ng-show="isStudentSelected" class="col-sm-6 animated fadeInLeft fadeOut">
+					<h3 class="text-center roboto">Student Information</h3>
+					<div class="well">
+						<ul class="text-center roboto">
+							<li class="listHeadline firstLi">Name</li>
+							<li class="largerLiFont">{{ selectedStudent.fName }} {{ selectedStudent.lName}}</li>
+							<li class="listHeadline">Contact Info</li>
+							<li class="largerLiFont">{{ selectedStudent.phoneNumber }}</li>
+							<li class="largerLiFont">{{ selectedStudent.email }}</li>
+							<li class="listHeadline">Birthday</li>
+							<li class="largerLiFont">{{ selectedStudent.birthday }}</li>
+							<li class="listHeadline">Prior Experience</li>
+							<li class="largerLiFont">{{ selectedStudent.priorExperience }}</li>
+							<li class="listHeadline">Absentee Points</li>
+							<li class="largerLiFont">{{ selectedStudent.absenteePoints }}/10</li>
+							<li class="listHeadline">Payments Delinquent</li>
+							<li class="largerLiFont">{{ selectedStudent.payDelinquency }}</li>
+							<li class="listHeadline">Graduation Status</li>
+							<li class="largerLiFont">{{ selectedStudent.graduated }}</li>
+						</ul>
+						<div class="text-center">
+							<button ng-click="editStudentClick()" class="btn btnWarning editBtn">Edit
+							</button>
+							<button ng-click="removeSelectedStudentClick()" class="btn btnDanger">Remove
+							</button>
+						</div>
+					</div>   
+				</div> <!-- Student Info Col6 ng-show -->
+			</div> <!-- Right Col7 -->
+		</div> <!-- 1st Row -->
+
+	</div> <!-- Body Container -->
+
+   <script src="./js/modules/app.js"></script>
+   <script src="./js/controllers/cohortController.js"></script>
+   <script src="./js/filters/addExistingInstructorToCohort.js"></script>
+   <script src="./js/filters/addExistingStudentToCohort.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
+</body>
+</html>

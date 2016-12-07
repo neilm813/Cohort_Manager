@@ -1,0 +1,275 @@
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+
+/*body {
+    background-image: url('./img/RedwoodPathBackgroundLight.jpg');
+    background-repeat: no-repeat;
+}*/
+
+.tinted-image {
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    url('./img/RedwoodPathBackgroundLight.jpg'),
+    no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+.well {
+    background: rgba(245, 245, 245, .7);
+}
+
+h3 {
+    /*background: rgba(171, 78, 82, .8);*/
+    background: rgba(83, 49, 24, .7);
+    border-radius: 7px;
+    color: antiquewhite;
+}
+
+.roboto {
+   font-family: 'Roboto', sans-serif;
+}
+
+li {
+   list-style-type: none;
+}
+
+.listHeadline {
+   font-size: 16px;
+   font-weight: bold;
+   text-decoration: underline;
+   padding-top: 15px;
+}
+
+.firstLi {
+   padding-top: 0px;
+}
+
+.largerLiFont {
+    font-size: 14px;
+}
+
+
+div {
+    transition: all linear 0.5s;
+}
+
+.blockCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.notesScrollDiv {
+    height: 340px;
+    float: left;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+
+/*****************************************
+HEADER/NAV
+*****************************************/
+
+body { 
+   padding-top: 90px; 
+   } /* fixed top navbar */
+
+nav, nav > div {
+   background: #e74c3c !important;
+}
+
+img[alt="Redwood Code Academy"] {
+   margin-bottom: 15px;
+   height: 60px;
+   margin-right: 24.5%;
+}
+
+
+h1 {
+   display: inline-block;
+   color: #fefbfb;
+}
+
+#navTitle {
+   color: #fefbfb;
+   font-size: 40px;
+}
+
+.inline-block {
+   display: inline-block;
+}
+
+.underline {
+   text-decoration: underline;
+}
+
+
+/*****************************************
+LEFT COHORTS COLUMN
+*****************************************/
+
+.marginTopBtn {
+    margin-top: 5px;
+}
+
+select {
+    margin-top: 15px;
+}
+
+.selectForm {
+    border-top: 2px solid #2c4361 !important;
+}
+/*****************************************
+LEFT STUDENTS COLUMN
+*****************************************/
+
+
+
+/*****************************************
+MEDIA QUERIES
+*****************************************/
+
+/*@media (max-width: ) {
+   img[alt="Redwood Code Academy"] {
+   margin-right: 30px;
+}*/
+
+/*****************************************
+ANIMATIONS
+*****************************************/
+
+/*.ng-animate {
+  transition:0.5s linear all;
+}
+.ng-enter {
+  opacity:0;
+  
+}
+.ng-enter.ng-enter-active {
+  opacity:1;
+  
+}
+.ng-leave {
+  opacity:1;
+  
+}
+.ng-leave.ng-leave-active {
+  opacity:0;
+  
+}*/
+
+
+/*****************************************
+BUTTONS
+*****************************************/
+
+.btn-danger {
+    background: rgba(139, 0, 0, .7);
+}
+
+.btn-default:focus {
+    background: rgba(98, 185, 45, .9);
+    color: antiquewhite;
+}
+.btn-default:hover {
+    background: rgba(66, 123, 30, .9);
+    color: antiquewhite;
+}
+
+.btn {
+   white-space: normal;
+}
+
+.editBtn {
+   width: 77.59px;
+}
+
+.addBtn {
+    margin-top: 10px;
+}
+
+.btn {
+    margin-bottom: 5px;
+}
+
+/* btnRepeat */
+.btnRepeat {
+  background-color: hsl(82, 48%, 14%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#61802d", endColorstr="#283412");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#61802d), to(#283412));
+  background-image: -moz-linear-gradient(top, #61802d, #283412);
+  background-image: -ms-linear-gradient(top, #61802d, #283412);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #61802d), color-stop(100%, #283412));
+  background-image: -webkit-linear-gradient(top, #61802d, #283412);
+  background-image: -o-linear-gradient(top, #61802d, #283412);
+  background-image: linear-gradient(#61802d, #283412);
+  border-color: #283412 #283412 hsl(82, 48%, 9%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* btnPrimary */
+.btnPrimary {
+  background-color: hsl(203, 35%, 35%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4a7c9a", endColorstr="#3a6078");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#4a7c9a), to(#3a6078));
+  background-image: -moz-linear-gradient(top, #4a7c9a, #3a6078);
+  background-image: -ms-linear-gradient(top, #4a7c9a, #3a6078);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4a7c9a), color-stop(100%, #3a6078));
+  background-image: -webkit-linear-gradient(top, #4a7c9a, #3a6078);
+  background-image: -o-linear-gradient(top, #4a7c9a, #3a6078);
+  background-image: linear-gradient(#4a7c9a, #3a6078);
+  border-color: #3a6078 #3a6078 hsl(203, 35%, 32.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* btnDanger */
+.btnDanger {
+  background-color: hsl(0, 51%, 28%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b83b3b", endColorstr="#6b2222");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#b83b3b), to(#6b2222));
+  background-image: -moz-linear-gradient(top, #b83b3b, #6b2222);
+  background-image: -ms-linear-gradient(top, #b83b3b, #6b2222);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b83b3b), color-stop(100%, #6b2222));
+  background-image: -webkit-linear-gradient(top, #b83b3b, #6b2222);
+  background-image: -o-linear-gradient(top, #b83b3b, #6b2222);
+  background-image: linear-gradient(#b83b3b, #6b2222);
+  border-color: #6b2222 #6b2222 hsl(0, 51%, 23%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btnWarning {
+  background-color: hsl(48, 100%, 36%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd632", endColorstr="#b79200");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffd632), to(#b79200));
+  background-image: -moz-linear-gradient(top, #ffd632, #b79200);
+  background-image: -ms-linear-gradient(top, #ffd632, #b79200);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd632), color-stop(100%, #b79200));
+  background-image: -webkit-linear-gradient(top, #ffd632, #b79200);
+  background-image: -o-linear-gradient(top, #ffd632, #b79200);
+  background-image: linear-gradient(#ffd632, #b79200);
+  border-color: #b79200 #b79200 hsl(48, 100%, 30%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.39);
+  -webkit-font-smoothing: antialiased;
+}

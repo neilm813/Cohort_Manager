@@ -1,0 +1,169 @@
+{  
+   "students": [
+      {
+      "id": 0,
+      "cohortId": 0,
+      "fName": "Taylor",
+      "lName": "Jones",
+      "phoneNumber": "(949) 555-5555",
+      "email": "taylor.jones@gmail.com",
+      "birthday": "06/06/66",
+      "sex": "male",
+      "absenteePoints": 0,
+      "payDelinquency": 0,
+      "priorExperience": "Beginner",
+      "graduated": "In Progress",
+      "notes": []
+   },
+   {
+      "id": 1,
+      "cohortId": 0,
+      "fName": "Quinn",
+      "lName": "Fuller",
+      "phoneNumber": "(949) 555-5555",
+      "email": "quinn.fuller@gmail.com",
+      "birthday": "04/02/1990",
+      "sex": "male",
+      "absenteePoints": 1,
+      "payDelinquency": 0,
+      "priorExperience": "Beginner",
+      "graduated": "In Progress",
+      "notes": []
+   },
+    {
+      "id": 2,
+      "cohortId": 0,
+      "fName": "Sean",
+      "lName": "Baggins",
+      "phoneNumber": "(949) 555-5555",
+      "email": "sean.baggins@gmail.com",
+      "birthday": "02/05/2000",
+      "sex": "male",
+      "absenteePoints": 1,
+      "payDelinquency": 0,
+      "priorExperience": "Intermediate",
+      "graduated": "In Progress"
+   },
+    {
+      "id": 3,
+      "cohortId": 1,
+      "fName": "Beth",
+      "lName": "Smith",
+      "phoneNumber": "(949) 555-5555",
+      "email": "beth.smith@gmail.com",
+      "birthday": "10/26/1987",
+      "sex": "female",
+      "absenteePoints": 0,
+      "payDelinquency": 0,
+      "priorExperience": "Horse Surgeon",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 4,
+      "cohortId": 1,
+      "fName": "Leeroy",
+      "lName": "Jenkins",
+      "phoneNumber": "(949) 555-5555",
+      "email": "leeroy.jenkins@gmail.com",
+      "birthday": "09/03/1985",
+      "sex": "male",
+      "absenteePoints": 3,
+      "payDelinquency": 4,
+      "priorExperience": "None",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 5,
+      "cohortId": 0,
+      "fName": "Kristoph",
+      "lName": "Mormin",
+      "phoneNumber": "(949) 555-5555",
+      "email": "kristoph.mormin@gmail.com",
+      "birthday": "07/09/1987",
+      "sex": "male",
+      "absenteePoints": 2,
+      "payDelinquency": 0,
+      "priorExperience": "Beginner",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 6,
+      "cohortId": 0,
+      "fName": "James",
+      "lName": "El Toro",
+      "phoneNumber": "(949) 555-5555",
+      "email": "james.et@gmail.com",
+      "birthday": "09/23/1985",
+      "sex": "male",
+      "absenteePoints": 0,
+      "payDelinquency": 0,
+      "priorExperience": "Beginner",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 7,
+      "cohortId": 0,
+      "fName": "Quazie",
+      "lName": "Zulu-Tyson",
+      "phoneNumber": "(949) 555-5555",
+      "email": "@gmail.com",
+      "birthday": "12/19/1980",
+      "sex": "male",
+      "absenteePoints": 2,
+      "payDelinquency": 0,
+      "priorExperience": "Beginner",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 8,
+      "cohortId": 0,
+      "fName": "Keller",
+      "lName": "Pinzolini",
+      "phoneNumber": "(949) 555-5555",
+      "email": "keller.p@gmail.com",
+      "birthday": "07/09/1987",
+      "sex": "male",
+      "absenteePoints": 0,
+      "payDelinquency": 0,
+      "priorExperience": "Intermediate",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 9,
+      "cohortId": 0,
+      "fName": "Nelson",
+      "lName": "Mosonic",
+      "phoneNumber": "(949) 555-5555",
+      "email": "nelsonm813@gmail.com",
+      "birthday": "08/13/1988",
+      "sex": "male",
+      "absenteePoints": 0,
+      "payDelinquency": 0,
+      "priorExperience": "Beginner",
+      "graduated": "In Progress"
+   },
+   {
+      "id": 10,
+      "cohortId": 0,
+      "fName": "Manuel",
+      "lName": "De La Tuba",
+      "phoneNumber": "(949) 555-5555",
+      "email": "manuel.dlt@gmail.com",
+      "birthday": "07/28/1978",
+      "sex": "male",
+      "absenteePoints": 0,
+      "payDelinquency": 0,
+      "priorExperience": "Intermediate",
+      "graduated": "In Progress"
+   }
+
+
+   
+
+  ]
+
+
+
+
+
+}
