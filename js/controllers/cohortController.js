@@ -47,6 +47,7 @@ app.controller("cohortController", ["$scope", "$http", "$q", function ($scope, $
 	// SET SELECTED COHORT
 	$scope.setSelectedCohortClick = function(cohortObject) {
 		$scope.selectedCohort = cohortObject;
+		console.log('selected cohort id: ' + $scope.selectedCohort.id);
 		$scope.isCohortSelected = true;
 		for ( var i = 0; i < $scope.cohorts.length; i++ ) {
 			if ( cohortObject.id == $scope.selectedCohort.id ) {
@@ -62,7 +63,7 @@ app.controller("cohortController", ["$scope", "$http", "$q", function ($scope, $
 	}
 	// CREATE NEW COHORT OBJECT & PUSH: save btn in modal
 	$scope.saveNewCohortClick = function() {
-		$scope.newCohort.id = $scope.cohorts.length;
+		$scope.newCohort.id = $scope.cohorts.length + 2; // to prevent seed data student's cohortId equaling a new cohort's id
 		$scope.newCohort.instructors = [];
 		$scope.newCohort.students = [];
 		// user input:
